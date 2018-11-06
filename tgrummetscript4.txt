@@ -1,0 +1,29 @@
+USE tgrummetassign2db;
+-- P1
+SELECT * FROM Agents;
+SELECT * FROM Products;
+SELECT * FROM Customers;
+SELECT * From Buys;
+
+-- P2
+CREATE VIEW  PurchaseInfo(FirstName,LastName,Description,Quantity,Cost,TotalCost) AS 
+SELECT Customers.FirstName, Customers.LastName,Products.Description, Buys.Quantity,Products.Cost, Buys.Quantity*Products.Cost
+FROM Customers 
+	INNER JOIN Buys WHERE Customers.CustomerID=Buys.CustomerID
+	INNER JOIN Products WHERE Buys.ProductID=Products.ProductID
+	ORDER BY LastName;
+	
+-- P3
+SELECT * FROM PurchaseInfo;
+-- P4
+SELECT * FROM PurchaseInfo WHERE TotalCost>100;
+-- P5 Banana was deleted because the command call for it, was the product I made up
+DELETE FROM Products WHERE Description="Banana";
+-- P6 No other rows deleted because they were not the product I made up
+SELECT Description FROM Products;
+SELECT Description FROM Products WHERE Description="Banana";
+
+-- P7 Hugh Grant deleted because he is from springfield
+-- Rosie ODonnell, Courtney Cox, David Letterman, Regis Philbin, Rosie Cox, Thomas Grummett
+-- not deleted because they'e not from Springfield
+DELETE FROM Agents WHERE City="Springfield"

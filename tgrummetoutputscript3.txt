@@ -1,0 +1,139 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+SELECT Description FROM Products
+--------------
+
+Description
+Bike
+Socks
+Bananas
+Elbow pads
+Knee Pads
+Roller Blades
+Helmet
+--------------
+SELECT DISTINCT City FROM Customers
+--------------
+
+City
+Bedrock
+Springfield
+Kypto
+Providence
+--------------
+SELECT * FROM Agents ORDER BY City
+--------------
+
+AgentID	First_Name	Last_Name	City	Commission
+33	David	Letterman	Bedrock	100
+11	Regis	Philbin	Boston	33
+35	Thomas	Grummett	Grimsby	45
+22	Courtney	Cox	New York	25
+12	Rosie	Cox	Ottawa	50
+66	Rosie	ODonnell	Ottawa	100
+99	Hugh	Grant	Springfield	16
+--------------
+SELECT First_Name,Last_Name FROM Customers WHERE City="Springfield"
+--------------
+
+First_Name	Last_Name
+Monty	Burns
+Homer	Simpson
+Sideshow	Bob
+--------------
+SELECT Last_Name FROM Customers WHERE AgentID=11
+--------------
+
+Last_Name
+Rubble
+Flintstone
+--------------
+SELECT Description FROM Products WHERE Description="%pad%"
+--------------
+
+--------------
+SELECT Last_Name, Description, Buys.Quantity FROM Customers,Products,Buys 
+WHERE Customers.CustomerID=Buys.CustomerID AND Buys.ProductID=Products.ProductID
+--------------
+
+Last_Name	Description	Quantity
+Griffens	Knee Pads	19
+Flintstone	Knee Pads	2
+Flintstone	Elbow pads	2
+Simpson	Helmet	20
+Simpson	Socks	14
+Simpson	Elbow pads	10
+Bob	Helmet	1
+Bob	Socks	2
+Bob	Knee Pads	4
+Bob	Elbow pads	2
+--------------
+SELECT SUM(Quantity) AS "Homers Total Purchases"
+FROM Customers INNER JOIN Buys 
+ON Customers.CustomerID=Buys.CustomerID AND Customers.First_Name='Homer'
+--------------
+
+Homers Total Purchases
+44
+--------------
+SELECT SUM(Quantity) AS "Total Products Purchased", First_Name, Last_Name 
+FROM Customers INNER JOIN Buys ON Customers.CustomerID=Buys.CustomerID
+--------------
+
+Total Products Purchased	First_Name	Last_Name
+76	Peter	Griffens
+--------------
+SELECT Products.Description,Products.Quantity FROM Products INNER JOIN Buys
+ON Products.ProductID=Buys.ProductID
+WHERE Buys.ProductID=NULL
+--------------
+
+--------------
+SELECT Products.Description,Products.Quantity FROM Products 
+INNER JOIN Buys ON Products.ProductID = Buys.ProductID
+INNER JOIN Customers ON Customers.CustomerID=Buys.CustomerID
+WHERE Customers.First_Name NOT IN('FRED') AND Customers.Last_Name NOT IN ('Flintstone')
+--------------
+
+Description	Quantity
+Socks	100
+Socks	100
+Elbow pads	120
+Elbow pads	120
+Knee Pads	70
+Knee Pads	70
+Helmet	30
+Helmet	30
+--------------
+SELECT Agents.First_Name,Agents.Last_Name,Customers.First_Name,Customers.Last_Name
+FROM Agents INNER JOIN Customers ON Agents.City=Customers.City
+--------------
+
+First_Name	Last_Name	First_Name	Last_Name
+David	Letterman	Barney	Rubble
+Hugh	Grant	Monty	Burns
+David	Letterman	Fred	Flintstone
+Hugh	Grant	Homer	Simpson
+Hugh	Grant	Sideshow	Bob
+--------------
+SELECT SUM(Quantity) AS "Total Purchased" FROM Buys WHERE ProductID=78
+--------------
+
+Total Purchased
+25
+--------------
+SELECT Description FROM Products INNER JOIN Buys ON Products.ProductID=Buys.ProductID
+GROUP BY Buys.ProductID
+HAVING COUNT(*)>3
+--------------
+
+--------------
+SELECT Agents.First_Name,Agents.Last_Name FROM Agents
+	INNER JOIN Customers ON Agents.AgentID=Customers.AgentID
+	INNER JOIN Buys ON Customers.CustomerID=Buys.CustomerID WHERE Buys.ProductID=78
+--------------
+
+First_Name	Last_Name
+Regis	Philbin
+Rosie	ODonnell
+Hugh	Grant

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 USE tgrummetassign2db;
 -- P1
 SELECT * FROM Agents;
@@ -27,3 +28,34 @@ SELECT Description FROM Products WHERE Description="Banana";
 -- Rosie ODonnell, Courtney Cox, David Letterman, Regis Philbin, Rosie Cox, Thomas Grummett
 -- not deleted because they'e not from Springfield
 DELETE FROM Agents WHERE City="Springfield"
+=======
+USE tgrummetassign2db;
+-- P1
+SELECT * FROM Agents;
+SELECT * FROM Products;
+SELECT * FROM Customers;
+SELECT * From Buys;
+
+-- P2
+CREATE VIEW  PurchaseInfo(First_Name,Last_Name,Description,Quantity,Cost,TotalCost) AS 
+SELECT Customers.First_Name, Customers.Last_Name,Products.Description, Buys.Quantity,Products.Cost, Buys.Quantity*Products.Cost
+FROM Customers 
+	INNER JOIN Buys ON Customers.CustomerID=Buys.CustomerID
+	INNER JOIN Products ON Buys.ProductID=Products.ProductID
+	ORDER BY Last_Name;
+	
+-- P3
+SELECT * FROM PurchaseInfo;
+-- P4
+SELECT * FROM PurchaseInfo WHERE TotalCost>100;
+-- P5 Banana was deleted because the command call for it, was the product I made up
+DELETE FROM Products WHERE Description="Banana";
+-- P6 No other rows deleted because they were not the product I made up
+SELECT Description FROM Products;
+SELECT Description FROM Products WHERE Description="Banana";
+
+-- P7 Hugh Grant not deleted because he has customers, and their Agent_ID can not be null
+-- Rosie ODonnell, Courtney Cox, David Letterman, Regis Philbin, Rosie Cox, Thomas Grummett
+-- not deleted because they'e not from Springfield
+DELETE FROM Agents WHERE City="Springfield"
+>>>>>>> a4e0f6162dc851b5fa21fd4db92ee4ecdbc6f06f

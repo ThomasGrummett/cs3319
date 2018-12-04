@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TGrummet A3</title>
+  <meta name="author" content="Thomas Grummett">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="test/css" href="a3.css">
+  <script src="a3.js"></script>
+</head>
+<body>
+<?php
+include 'connectdb.php';
+include 'pickDB.php';
+?> 
+<h1>Thomas Grummett Assignment 3<h1>
+<form action="loadDB.php" method="post">
+<select name="pickDB" id="pickADB">
+  <option value="Customers">Customers</option>
+  <option value="Products">Products</option>
+</select>
+</form>
+</body>
+</html>

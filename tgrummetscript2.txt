@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 USE tgrummetassign2db;
 
 LOAD DATA LOCAL INFILE'loaddatafall2018.txt' INTO TABLE Products FIELDS TERMINATED BY ',';
@@ -36,3 +37,43 @@ SELECT * FROM Agents;
 SELECT * FROM Products;
 SELECT * FROM Customers;
 SELECT * FROM Buys;
+=======
+USE tgrummetassign2db;
+
+LOAD DATA LOCAL INFILE'loaddatafall2018.txt' INTO TABLE Products FIELDS TERMINATED BY ',';
+
+INSERT INTO Products VALUES(66,"Elbow pads",14.25,120);
+INSERT INTO Products VALUES(38,"Bananas",2.00,300);
+
+INSERT INTO Agents VALUES(99,"Hugh","Grant","Springfield",16);
+INSERT INTO Agents VALUES(22,"Courtney","Cox","New York",25);
+INSERT INTO Agents VALUES(66, "Rosie","ODonnell","Ottawa",100);
+INSERT INTO Agents VALUES(33, "David","Letterman","Bedrock",100);
+INSERT INTO Agents VALUES(11, "Regis","Philbin","Boston",33);
+INSERT INTO Agents VALUES(12, "Rosie","Cox","Ottawa",50);
+INSERT INTO Agents VALUES(35,"Thomas","Grummett","Grimsby",45);
+
+INSERT INTO Customers VALUES(21, "Homer", "Simpson", "Springfield", "686-8956",99);
+INSERT INTO Customers VALUES(31, "Sideshow", "Bob", "Springfield", "686-5555",66);
+INSERT INTO Customers VALUES(12, "Monty", "Burns", "Springfield", "789-0000",99);
+INSERT INTO Customers VALUES(15, "Fred", "Flintstone", "Bedrock", "777-2345",11);
+INSERT INTO Customers VALUES(13, "Super", "Man", "Kypto", "888-1234",33);
+INSERT INTO Customers VALUES(10, "Barney", "Rubble", "Bedrock", "777-1234",11);
+INSERT INTO Customers VALUES(14, "Peter", "Griffens", "Providence", "987-4567",99);
+
+INSERT INTO Buys VALUES(21,99,20);
+INSERT INTO Buys VALUES(21,12,14);
+INSERT INTO Buys VALUES(21,66,10);
+INSERT INTO Buys VALUES(31,99,1);
+INSERT INTO Buys VALUES(31,12,2);
+INSERT INTO Buys VALUES(31,78,4);
+INSERT INTO Buys VALUES(31,66,2);
+INSERT INTO Buys VALUES(15,78,2);
+INSERT INTO Buys VALUES(15,66,2);
+INSERT INTO Buys VALUES(14,78,19);
+
+SELECT * FROM Agents;
+SELECT * FROM Products;
+SELECT * FROM Customers;
+SELECT * FROM Buys;
+>>>>>>> a4e0f6162dc851b5fa21fd4db92ee4ecdbc6f06f

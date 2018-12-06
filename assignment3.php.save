@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TGrummet A3</title>
+  <meta name="author" content="Thomas Grummett">
+  <meta charset="utf-8">
+  <style> <?php include 'a3.css'; ?></style>
+  <script src="a3.js"></script>
+</head>
+<body>
+<?php
+include 'connectdb.php';
+?> 
+<h1>Thomas Grummett Assignment 3<h1>
+<?php
+include 'showCustomers.php';
+include 'showProducts.php';
+?>
+<hr>
+
+</body>
+</html>
